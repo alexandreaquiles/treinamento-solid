@@ -17,13 +17,11 @@ public class Main {
 
 			if ("pdf".equals(formato)) {
 
-				GeradorDePDF geradorDePDF = new GeradorDePDF();
-				geradorDePDF.geraPDF(diretorioDosMD, arquivoDeSaida);
+				GeradorDePDF.geraPDF(diretorioDosMD, arquivoDeSaida);
 
 			} else if ("epub".equals(formato)) {
 
-				GeradorDeEPUB geradorDeEPUB = new GeradorDeEPUB();
-				geradorDeEPUB.geraEPUB(diretorioDosMD, arquivoDeSaida);
+				GeradorDeEPUB.geraEPUB(diretorioDosMD, arquivoDeSaida);
 
 			} else {
 				throw new RuntimeException("Formato do ebook inválido: " + formato);
