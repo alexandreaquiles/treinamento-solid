@@ -6,14 +6,14 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-public class LeitorOpcoesCLI {
+public class LeitorDeOpcoesDaCLI {
 
     private Path diretorioDosMD;
     private String formato;
     private Path arquivoDeSaida;
     private boolean modoVerboso = false;
 
-    public LeitorOpcoesCLI(String[] args) {
+    public LeitorDeOpcoesDaCLI(String[] args) {
         Options options = new Options();
 
         Option opcaoDeDiretorioDosMD = new Option("d", "dir", true,
