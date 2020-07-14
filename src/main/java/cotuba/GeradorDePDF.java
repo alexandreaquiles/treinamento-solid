@@ -15,12 +15,15 @@ import java.util.List;
 
 public class GeradorDePDF {
 
-    public static void geraPDF(List<String> htmlsRenderizados, Path arquivoDeSaida) {
+    public static void geraPDF(Ebook ebook) {
+        List<Capitulo> capitulos = ebook.getCapitulos();
+        Path arquivoDeSaida = ebook.getArquivoDeSaida();
         try (PdfWriter writer = new PdfWriter(Files.newOutputStream(arquivoDeSaida));
              PdfDocument pdf = new PdfDocument(writer);
              Document pdfDocument = new Document(pdf)) {
 
-            for (String html : htmlsRenderizados) {
+            for (Capitulo capitulo : capitulos) {
+                String html = capitulo.getConteudoHTML();
                 List<IElement> convertToElements = HtmlConverter.convertToElements(html);
                 for (IElement element : convertToElements) {
                     pdfDocument.add((IBlockElement) element);

@@ -12,12 +12,16 @@ import java.util.List;
 
 public class GeradorDeEPUB {
 
-    public static void geraEPUB(List<String> htmlsRenderizados, Path arquivoDeSaida) {
+    public static void geraEPUB(Ebook ebook) {
+        List<Capitulo> capitulos = ebook.getCapitulos();
+        Path arquivoDeSaida = ebook.getArquivoDeSaida();
+
         Book epub = new Book();
 
-        for (String html : htmlsRenderizados) {
-            // TODO: usar título do capítulo
-            epub.addSection("Capítulo", new Resource(html.getBytes(), MediatypeService.XHTML));
+        for (Capitulo capitulo : capitulos) {
+            String html = capitulo.getConteudoHTML();
+            String titulo = capitulo.getTitulo();
+            epub.addSection(titulo, new Resource(html.getBytes(), MediatypeService.XHTML));
         }
 
         EpubWriter epubWriter = new EpubWriter();

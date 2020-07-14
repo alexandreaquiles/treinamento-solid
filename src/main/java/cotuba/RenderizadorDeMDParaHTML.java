@@ -18,9 +18,9 @@ import java.util.stream.Stream;
 
 public class RenderizadorDeMDParaHTML {
 
-    public static List<String> renderiza(Path diretorioDosMD) {
+    public static List<Capitulo> renderiza(Path diretorioDosMD) {
 
-        List<String> htmlsRenderizados = new ArrayList<>();
+        List<Capitulo> capitulos = new ArrayList<>();
 
         PathMatcher matcher = FileSystems.getDefault().getPathMatcher("glob:**/*.md");
         try (Stream<Path> arquivosMD = Files.list(diretorioDosMD)) {
@@ -28,6 +28,8 @@ public class RenderizadorDeMDParaHTML {
                     .filter(matcher::matches)
                     .sorted()
                     .forEach(arquivoMD -> {
+                        Capitulo capitulo = new Capitulo();
+
                         Parser parser = Parser.builder().build();
                         Node document = null;
                         try {
@@ -38,7 +40,7 @@ public class RenderizadorDeMDParaHTML {
                                     if (heading.getLevel() == 1) {
                                         // capítulo
                                         String tituloDoCapitulo = ((Text) heading.getFirstChild()).getLiteral();
-                                        // TODO: usar título do capítulo
+                                        capitulo.setTitulo(tituloDoCapitulo);
                                     } else if (heading.getLevel() == 2) {
                                         // seção
                                     } else if (heading.getLevel() == 3) {
@@ -55,14 +57,15 @@ public class RenderizadorDeMDParaHTML {
                             HtmlRenderer renderer = HtmlRenderer.builder().build();
                             String html = renderer.render(document);
 
-                            htmlsRenderizados.add(html);
+                            capitulo.setConteudoHTML(html);
+                            capitulos.add(capitulo);
 
                         } catch (Exception ex) {
                             throw new RuntimeException("Erro ao renderizar para HTML o arquivo " + arquivoMD, ex);
                         }
                     });
 
-            return htmlsRenderizados;
+            return capitulos;
         } catch (IOException ex) {
             throw new RuntimeException(
                     "Erro tentando encontrar arquivos .md em " + diretorioDosMD.toAbsolutePath(), ex);

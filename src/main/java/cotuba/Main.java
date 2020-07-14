@@ -16,15 +16,20 @@ public class Main {
 
 		try {
 
-			List<String> htmlsRenderizados = RenderizadorDeMDParaHTML.renderiza(diretorioDosMD);
+			List<Capitulo> capitulos = RenderizadorDeMDParaHTML.renderiza(diretorioDosMD);
+
+			Ebook ebook = new Ebook();
+			ebook.setFormato(formato);
+			ebook.setArquivoDeSaida(arquivoDeSaida);
+			ebook.setCapitulos(capitulos);
 
 			if ("pdf".equals(formato)) {
 
-				GeradorDePDF.geraPDF(htmlsRenderizados, arquivoDeSaida);
+				GeradorDePDF.geraPDF(ebook);
 
 			} else if ("epub".equals(formato)) {
 
-				GeradorDeEPUB.geraEPUB(htmlsRenderizados, arquivoDeSaida);
+				GeradorDeEPUB.geraEPUB(ebook);
 
 			} else {
 				throw new RuntimeException("Formato do ebook inválido: " + formato);
