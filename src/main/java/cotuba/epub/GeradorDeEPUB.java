@@ -1,5 +1,7 @@
-package cotuba;
+package cotuba.epub;
 
+import cotuba.dominio.Capitulo;
+import cotuba.dominio.Ebook;
 import nl.siegmann.epublib.domain.Book;
 import nl.siegmann.epublib.domain.Resource;
 import nl.siegmann.epublib.epub.EpubWriter;

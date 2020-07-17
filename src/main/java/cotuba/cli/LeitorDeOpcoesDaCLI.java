@@ -1,4 +1,4 @@
-package cotuba;
+package cotuba.cli;
 
 import org.apache.commons.cli.*;
 
@@ -8,10 +8,12 @@ import java.nio.file.Paths;
 
 public class LeitorDeOpcoesDaCLI {
 
+    public static final boolean MODO_VERBOSO_PADRAO = false;
+
     private Path diretorioDosMD;
     private String formato;
     private Path arquivoDeSaida;
-    private boolean modoVerboso = false;
+    private boolean modoVerboso = MODO_VERBOSO_PADRAO;
 
     public LeitorDeOpcoesDaCLI(String[] args) {
         Options options = new Options();
@@ -39,10 +41,8 @@ public class LeitorDeOpcoesDaCLI {
         try {
             cmd = cmdParser.parse(options, args);
         } catch (ParseException e) {
-            System.err.println(e.getMessage());
             ajuda.printHelp("cotuba", options);
-            System.exit(1);
-            return;
+            throw new RuntimeException("Opção inválida", e);
         }
 
         String nomeDoDiretorioDosMD = cmd.getOptionValue("dir");
