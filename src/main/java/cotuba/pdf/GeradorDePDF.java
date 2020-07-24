@@ -17,7 +17,7 @@ import java.util.List;
 
 public class GeradorDePDF {
 
-    public static void geraPDF(Ebook ebook) {
+    public void geraPDF(Ebook ebook) {
         List<Capitulo> capitulos = ebook.getCapitulos();
         Path arquivoDeSaida = ebook.getArquivoDeSaida();
         try (PdfWriter writer = new PdfWriter(Files.newOutputStream(arquivoDeSaida));

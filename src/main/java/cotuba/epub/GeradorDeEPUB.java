@@ -14,7 +14,7 @@ import java.util.List;
 
 public class GeradorDeEPUB {
 
-    public static void geraEPUB(Ebook ebook) {
+    public void geraEPUB(Ebook ebook) {
         List<Capitulo> capitulos = ebook.getCapitulos();
         Path arquivoDeSaida = ebook.getArquivoDeSaida();
 

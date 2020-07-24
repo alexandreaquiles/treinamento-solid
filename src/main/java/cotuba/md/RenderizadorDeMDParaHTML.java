@@ -19,7 +19,7 @@ import java.util.stream.Stream;
 
 public class RenderizadorDeMDParaHTML {
 
-    public static List<Capitulo> renderiza(Path diretorioDosMD) {
+    public List<Capitulo> renderiza(Path diretorioDosMD) {
 
         List<Capitulo> capitulos = new ArrayList<>();
 
