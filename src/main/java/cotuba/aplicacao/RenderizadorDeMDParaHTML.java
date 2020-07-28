@@ -1,6 +1,7 @@
-package cotuba.md;
+package cotuba.aplicacao;
 
 import cotuba.dominio.Capitulo;
+import cotuba.md.RenderizadorDeMDParaHTMLComCommonMark;
 
 import java.nio.file.Path;
 import java.util.List;

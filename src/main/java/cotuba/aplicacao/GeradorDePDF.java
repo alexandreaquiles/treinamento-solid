@@ -1,6 +1,7 @@
-package cotuba.pdf;
+package cotuba.aplicacao;
 
 import cotuba.dominio.Ebook;
+import cotuba.pdf.GeradorDePDFComIText;
 
 public interface GeradorDePDF {
 
