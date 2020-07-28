@@ -5,7 +5,7 @@ import cotuba.dominio.Ebook;
 public interface GeradorDeEPUB {
 
     static GeradorDeEPUB cria() {
-        return new GeradorDeEPUBImpl();
+        return new GeradorDeEPUBComEpublib();
     }
 
     void geraEPUB(Ebook ebook);

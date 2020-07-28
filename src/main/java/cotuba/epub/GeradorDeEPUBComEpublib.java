@@ -12,7 +12,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
 
-public class GeradorDeEPUBImpl implements GeradorDeEPUB {
+public class GeradorDeEPUBComEpublib implements GeradorDeEPUB {
 
     @Override
     public void geraEPUB(Ebook ebook) {

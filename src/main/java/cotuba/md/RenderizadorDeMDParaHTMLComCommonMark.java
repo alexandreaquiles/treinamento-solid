@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
 
-public class RenderizadorDeMDParaHTMLImpl implements RenderizadorDeMDParaHTML {
+public class RenderizadorDeMDParaHTMLComCommonMark implements RenderizadorDeMDParaHTML {
 
     @Override
     public List<Capitulo> renderiza(Path diretorioDosMD) {
