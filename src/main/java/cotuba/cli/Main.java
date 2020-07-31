@@ -12,14 +12,12 @@ public class Main {
 
 		try {
 
-			LeitorDeOpcoesDaCLI opcoesCLI = new LeitorDeOpcoesDaCLI(args);
+			LeitorDeOpcoesDaCLI opcoesDaCLI = new LeitorDeOpcoesDaCLI(args);
 
-			Path diretorioDosMD = opcoesCLI.getDiretorioDosMD();
-			String formato = opcoesCLI.getFormato();
-			Path arquivoDeSaida = opcoesCLI.getArquivoDeSaida();
-			modoVerboso = opcoesCLI.isModoVerboso();
+			Path arquivoDeSaida = opcoesDaCLI.getArquivoDeSaida();
+			modoVerboso = opcoesDaCLI.isModoVerboso();
 
-			Cotuba.executa(formato, diretorioDosMD, arquivoDeSaida);
+			Cotuba.executa(opcoesDaCLI);
 
 			System.out.println("Arquivo gerado com sucesso: " + arquivoDeSaida);
 

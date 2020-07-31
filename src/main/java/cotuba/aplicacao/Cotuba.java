@@ -8,7 +8,11 @@ import java.util.List;
 
 public class Cotuba {
 
-    public static void executa(String formato, Path diretorioDosMD, Path arquivoDeSaida) {
+    public static void executa(ParametrosDoCotuba parametrosDoCotuba) {
+        String formato = parametrosDoCotuba.getFormato();
+        Path diretorioDosMD = parametrosDoCotuba.getDiretorioDosMD();
+        Path arquivoDeSaida = parametrosDoCotuba.getArquivoDeSaida();
+
         RenderizadorDeMDParaHTML renderizadorDeMDParaHTML = RenderizadorDeMDParaHTML.cria();
         List<Capitulo> capitulos = renderizadorDeMDParaHTML.renderiza(diretorioDosMD);
 

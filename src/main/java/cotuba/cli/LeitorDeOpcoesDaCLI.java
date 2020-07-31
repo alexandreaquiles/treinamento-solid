@@ -1,12 +1,13 @@
 package cotuba.cli;
 
+import cotuba.aplicacao.ParametrosDoCotuba;
 import org.apache.commons.cli.*;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-public class LeitorDeOpcoesDaCLI {
+public class LeitorDeOpcoesDaCLI implements ParametrosDoCotuba {
 
     public static final boolean MODO_VERBOSO_PADRAO = false;
 
