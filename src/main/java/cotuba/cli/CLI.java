@@ -1,12 +1,20 @@
 package cotuba.cli;
 
 import cotuba.aplicacao.Cotuba;
+import org.springframework.stereotype.Component;
 
 import java.nio.file.Path;
 
-public class Main {
+@Component
+public class CLI {
 
-	public static void main(String[] args) {
+	private final Cotuba cotuba;
+
+	public CLI(Cotuba cotuba) {
+		this.cotuba = cotuba;
+	}
+
+	public void executa(String[] args) {
 
 		boolean modoVerboso = LeitorDeOpcoesDaCLI.MODO_VERBOSO_PADRAO;
 
@@ -19,7 +27,7 @@ public class Main {
 			Path arquivoDeSaida = opcoesCLI.getArquivoDeSaida();
 			modoVerboso = opcoesCLI.isModoVerboso();
 
-			Cotuba.executa(formato, diretorioDosMD, arquivoDeSaida);
+			cotuba.executa(formato, diretorioDosMD, arquivoDeSaida);
 
 			System.out.println("Arquivo gerado com sucesso: " + arquivoDeSaida);
 

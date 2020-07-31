@@ -1,1 +1,1 @@
-java -cp "libs/*" cotuba.cli.Main "%*"
+java -cp "libs/*" cotuba.Main "%*"
