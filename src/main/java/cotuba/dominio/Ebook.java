@@ -5,15 +5,15 @@ import java.util.List;
 
 public class Ebook {
 
-    private String formato;
+    private FormatoDoEbook formato;
     private Path arquivoDeSaida;
     private List<Capitulo> capitulos;
 
-    public String getFormato() {
+    public FormatoDoEbook getFormato() {
         return formato;
     }
 
-    public void setFormato(String formato) {
+    public void setFormato(FormatoDoEbook formato) {
         this.formato = formato;
     }
 

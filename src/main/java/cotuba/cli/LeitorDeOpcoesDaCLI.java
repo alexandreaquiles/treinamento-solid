@@ -1,6 +1,7 @@
 package cotuba.cli;
 
 import cotuba.aplicacao.ParametrosDoCotuba;
+import cotuba.dominio.FormatoDoEbook;
 import org.apache.commons.cli.*;
 
 import java.nio.file.Files;
@@ -12,7 +13,7 @@ public class LeitorDeOpcoesDaCLI implements ParametrosDoCotuba {
     public static final boolean MODO_VERBOSO_PADRAO = false;
 
     private Path diretorioDosMD;
-    private String formato;
+    private FormatoDoEbook formato;
     private Path arquivoDeSaida;
     private boolean modoVerboso = MODO_VERBOSO_PADRAO;
 
@@ -61,9 +62,9 @@ public class LeitorDeOpcoesDaCLI implements ParametrosDoCotuba {
         String nomeDoFormatoDoEbook = cmd.getOptionValue("format");
 
         if (nomeDoFormatoDoEbook != null) {
-            formato = nomeDoFormatoDoEbook.toLowerCase();
+            formato = FormatoDoEbook.valueOf(nomeDoFormatoDoEbook.toUpperCase());
         } else {
-            formato = "pdf";
+            formato = FormatoDoEbook.PDF;
         }
 
         String nomeDoArquivoDeSaidaDoEbook = cmd.getOptionValue("output");
@@ -73,7 +74,7 @@ public class LeitorDeOpcoesDaCLI implements ParametrosDoCotuba {
                 throw new RuntimeException(nomeDoArquivoDeSaidaDoEbook + " é um diretório.");
             }
         } else {
-            arquivoDeSaida = Paths.get("book." + formato.toLowerCase());
+            arquivoDeSaida = Paths.get("book." + formato.name().toLowerCase());
         }
 
         modoVerboso = cmd.hasOption("verbose");
@@ -84,7 +85,7 @@ public class LeitorDeOpcoesDaCLI implements ParametrosDoCotuba {
         return diretorioDosMD;
     }
 
-    public String getFormato() {
+    public FormatoDoEbook getFormato() {
         return formato;
     }
 
