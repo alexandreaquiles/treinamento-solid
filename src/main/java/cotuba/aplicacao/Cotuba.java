@@ -22,7 +22,7 @@ public class Cotuba {
         ebook.setArquivoDeSaida(arquivoDeSaida);
         ebook.setCapitulos(capitulos);
 
-        GeradorDeEbook geradorDeEbook = GeradorDeEbook.cria(formato);
+        GeradorDeEbook geradorDeEbook = formato.getGeradorDeEbook();
         geradorDeEbook.gera(ebook);
     }
 
