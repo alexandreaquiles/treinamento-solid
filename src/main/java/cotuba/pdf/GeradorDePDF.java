@@ -8,7 +8,7 @@ import com.itextpdf.layout.element.AreaBreak;
 import com.itextpdf.layout.element.IBlockElement;
 import com.itextpdf.layout.element.IElement;
 import com.itextpdf.layout.property.AreaBreakType;
-import cotuba.aplicacao.GeradorDePDF;
+import cotuba.aplicacao.GeradorDeEbook;
 import cotuba.dominio.Capitulo;
 import cotuba.dominio.Ebook;
 
@@ -16,10 +16,10 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
 
-public class GeradorDePDFComIText implements GeradorDePDF {
+public class GeradorDePDF implements GeradorDeEbook {
 
     @Override
-    public void geraPDF(Ebook ebook) {
+    public void gera(Ebook ebook) {
         List<Capitulo> capitulos = ebook.getCapitulos();
         Path arquivoDeSaida = ebook.getArquivoDeSaida();
         try (PdfWriter writer = new PdfWriter(Files.newOutputStream(arquivoDeSaida));
@@ -41,4 +41,5 @@ public class GeradorDePDFComIText implements GeradorDePDF {
             throw new RuntimeException("Erro ao criar arquivo PDF: " + arquivoDeSaida.toAbsolutePath(), ex);
         }
     }
+
 }
