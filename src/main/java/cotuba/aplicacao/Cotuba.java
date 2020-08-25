@@ -17,6 +17,9 @@ public class Cotuba {
         RenderizadorDeMDParaHTML renderizadorDeMDParaHTML = RenderizadorDeMDParaHTML.cria();
         List<Capitulo> capitulos = renderizadorDeMDParaHTML.renderiza(diretorioDosMD);
 
+        // for each Capitulo
+        // chamar AplicadorDeTema aqui...
+
         Ebook ebook = new Ebook();
         ebook.setFormato(formato);
         ebook.setArquivoDeSaida(arquivoDeSaida);

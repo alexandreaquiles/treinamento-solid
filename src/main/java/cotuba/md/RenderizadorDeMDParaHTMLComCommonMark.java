@@ -61,6 +61,7 @@ public class RenderizadorDeMDParaHTMLComCommonMark implements RenderizadorDeMDPa
                             String html = renderer.render(document);
 
                             capitulo.setConteudoHTML(html);
+                            // chamar AplicadorDeTema aqui...
                             capitulos.add(capitulo);
 
                         } catch (Exception ex) {
