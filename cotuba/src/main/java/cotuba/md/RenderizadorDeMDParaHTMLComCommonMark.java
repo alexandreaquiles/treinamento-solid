@@ -2,6 +2,7 @@ package cotuba.md;
 
 import cotuba.aplicacao.RenderizadorDeMDParaHTML;
 import cotuba.dominio.Capitulo;
+import cotuba.tema.AplicadorDeTema;
 import org.commonmark.node.AbstractVisitor;
 import org.commonmark.node.Heading;
 import org.commonmark.node.Node;
@@ -61,7 +62,10 @@ public class RenderizadorDeMDParaHTMLComCommonMark implements RenderizadorDeMDPa
                             String html = renderer.render(document);
 
                             capitulo.setConteudoHTML(html);
-                            // chamar AplicadorDeTema aqui...
+
+                            AplicadorDeTema tema = new AplicadorDeTema();
+                            tema.aplica(capitulo);
+
                             capitulos.add(capitulo);
 
                         } catch (Exception ex) {
