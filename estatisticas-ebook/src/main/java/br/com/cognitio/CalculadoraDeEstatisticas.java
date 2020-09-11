@@ -7,6 +7,7 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
 import java.text.Normalizer;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -20,8 +21,6 @@ public class CalculadoraDeEstatisticas implements Plugin {
 
     @Override
     public void aposGeracao(Ebook ebook) {
-
-        // imprimir as palavras do livro
 
         List<Capitulo> capitulos = ebook.getCapitulos();
         for (Capitulo capitulo: capitulos) {
@@ -38,9 +37,14 @@ public class CalculadoraDeEstatisticas implements Plugin {
 
             ContagemDePalavras contagemDeTodasAsPalavras = new ContagemDePalavras();
             for (String palavra : palavras) {
-                String palavraEmMaiusculas = palavra.toUpperCase();
+                String palavraEmMaiusculas = palavra.toUpperCase().trim();
                 contagemDeTodasAsPalavras.adicionaPalavra(palavraEmMaiusculas);
             }
+
+//            contagemDeTodasAsPalavras.clear();
+//            contagemDeTodasAsPalavras.replace(...);
+
+//            Integer quantidade = contagemDeTodasAsPalavras.get("Abacate");
 
             for (Map.Entry<String, Integer> par: contagemDeTodasAsPalavras.entrySet()) {
                 String palavra = par.getKey();

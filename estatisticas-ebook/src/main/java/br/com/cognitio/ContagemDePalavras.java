@@ -1,9 +1,11 @@
 package br.com.cognitio;
 
-import java.util.HashMap;
+import java.util.Collection;
+import java.util.TreeMap;
 
-public class ContagemDePalavras extends HashMap<String, Integer> {
-
+public class ContagemDePalavras extends TreeMap<String, Integer> {
+                               // é um tipo especial de (FAKE NEWS)
+    // herança
     public void adicionaPalavra(String palavra) {
         Integer contagemAtual = this.get(palavra);
         if (contagemAtual == null) {
@@ -12,5 +14,4 @@ public class ContagemDePalavras extends HashMap<String, Integer> {
             this.put(palavra, contagemAtual + 1);
         }
     }
-
 }
