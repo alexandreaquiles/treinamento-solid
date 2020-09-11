@@ -1,17 +1,22 @@
 package br.com.cognitio;
 
-import java.util.Collection;
+import java.util.Map;
 import java.util.TreeMap;
 
-public class ContagemDePalavras extends TreeMap<String, Integer> {
-                               // é um tipo especial de (FAKE NEWS)
-    // herança
+public class ContagemDePalavras {
+
+    private Map<String, Integer> map = new TreeMap<>();
+
     public void adicionaPalavra(String palavra) {
-        Integer contagemAtual = this.get(palavra);
+        Integer contagemAtual = map.get(palavra);
         if (contagemAtual == null) {
-            this.put(palavra, 1);
+            map.put(palavra, 1);
         } else {
-            this.put(palavra, contagemAtual + 1);
+            map.put(palavra, contagemAtual + 1);
         }
+    }
+
+    public Iterable<? extends Map.Entry<String, Integer>> entrySet() {
+        return map.entrySet();
     }
 }
