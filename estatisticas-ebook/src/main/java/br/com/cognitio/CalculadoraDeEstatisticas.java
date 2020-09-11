@@ -6,7 +6,10 @@ import cotuba.plugin.Plugin;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
+import java.text.Normalizer;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class CalculadoraDeEstatisticas implements Plugin {
 
@@ -27,11 +30,24 @@ public class CalculadoraDeEstatisticas implements Plugin {
             Document document = Jsoup.parse(html);
             String text = document.body().text();
 
-            String[] palavras = text.split("\\s+");
+            String textoDoCapituloSemPontuacao = text.replaceAll("\\p{Punct}", " ");
+            String decomposta = Normalizer.normalize(textoDoCapituloSemPontuacao, Normalizer.Form.NFD);
+            String textoDoCapituloSemAcentos = decomposta.replaceAll("[^\\p{ASCII}]", "");
 
+            String[] palavras = textoDoCapituloSemAcentos.split("\\s+");
+
+            ContagemDePalavras contagemDeTodasAsPalavras = new ContagemDePalavras();
             for (String palavra : palavras) {
-                System.out.println(palavra);
+                String palavraEmMaiusculas = palavra.toUpperCase();
+                contagemDeTodasAsPalavras.adicionaPalavra(palavraEmMaiusculas);
             }
+
+            for (Map.Entry<String, Integer> par: contagemDeTodasAsPalavras.entrySet()) {
+                String palavra = par.getKey();
+                Integer contagem = par.getValue();
+                System.out.println(palavra + ":" + contagem);
+            }
+
         }
 
     }
