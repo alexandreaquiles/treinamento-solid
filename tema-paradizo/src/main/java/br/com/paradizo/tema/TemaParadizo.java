@@ -12,6 +12,6 @@ public class TemaParadizo implements Plugin  {
 
     @Override
     public void aposGeracao(Ebook ebook) {
-
+        // nada aqui...
     }
 }

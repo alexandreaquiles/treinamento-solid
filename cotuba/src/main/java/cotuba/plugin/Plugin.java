@@ -6,10 +6,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ServiceLoader;
 
-// SPI
+// SPI (Service Provider Interface) - interface está pouco coesa
 public interface Plugin {
 
     String cssDoTema();
+
+    void aposGeracao(Ebook ebook);
 
     static List<String> listaDeTemas() {
         ServiceLoader<Plugin> loader = ServiceLoader.load(Plugin.class);
@@ -20,8 +22,6 @@ public interface Plugin {
         }
         return temas;
     }
-
-    void aposGeracao(Ebook ebook);
 
     static void gerou(Ebook ebook) {
         ServiceLoader<Plugin> loader = ServiceLoader.load(Plugin.class);

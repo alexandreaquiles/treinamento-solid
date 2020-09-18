@@ -14,7 +14,7 @@ public class CalculadoraDeEstatisticas implements Plugin {
 
     @Override
     public String cssDoTema() {
-        return null;
+        throw new UnsupportedOperationException("Calculadora de estatísticas não dá suporte a temas.");
     }
 
     @Override
