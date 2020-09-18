@@ -1,12 +1,10 @@
 package cotuba.tema;
 
 import cotuba.dominio.Capitulo;
-import cotuba.plugin.Plugin;
+import cotuba.plugin.Tema;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
-
-import java.util.ServiceLoader;
 
 public class AplicadorDeTema {
 
@@ -16,7 +14,7 @@ public class AplicadorDeTema {
 
         Elements head = document.select("head");
 
-        for (String tema : Plugin.listaDeTemas()) {
+        for (String tema : Tema.listaDeTemas()) {
             head.append("<style>" + tema + "</style>");
         }
 

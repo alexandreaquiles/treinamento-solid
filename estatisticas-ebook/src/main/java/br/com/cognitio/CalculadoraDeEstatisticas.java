@@ -2,7 +2,7 @@ package br.com.cognitio;
 
 import cotuba.dominio.Capitulo;
 import cotuba.dominio.Ebook;
-import cotuba.plugin.Plugin;
+import cotuba.plugin.AoFinalizarGeracao;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
@@ -10,12 +10,7 @@ import java.text.Normalizer;
 import java.util.List;
 import java.util.Map;
 
-public class CalculadoraDeEstatisticas implements Plugin {
-
-    @Override
-    public String cssDoTema() {
-        throw new UnsupportedOperationException("Calculadora de estatísticas não dá suporte a temas.");
-    }
+public class CalculadoraDeEstatisticas implements AoFinalizarGeracao {
 
     @Override
     public void aposGeracao(Ebook ebook) {
