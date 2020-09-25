@@ -1,7 +1,7 @@
 package br.com.cognitio;
 
-import cotuba.dominio.Capitulo;
-import cotuba.dominio.Ebook;
+import cotuba.plugin.Capitulo;
+import cotuba.plugin.Ebook;
 import cotuba.plugin.AoFinalizarGeracao;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -15,8 +15,9 @@ public class CalculadoraDeEstatisticas implements AoFinalizarGeracao {
     @Override
     public void aposGeracao(Ebook ebook) {
 
-        List<Capitulo> capitulos = ebook.getCapitulos();
+        List<? extends Capitulo> capitulos = ebook.getCapitulos();
         for (Capitulo capitulo: capitulos) {
+
             String html = capitulo.getConteudoHTML();
 
             Document document = Jsoup.parse(html);
