@@ -3,6 +3,8 @@ package cotuba.dominio;
 import java.nio.file.Path;
 import java.util.List;
 
+import cotuba.plugin.Capitulo;
+
 public class Ebook implements cotuba.plugin.Ebook {
 
     private FormatoDoEbook formato;

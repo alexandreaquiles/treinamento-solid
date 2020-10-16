@@ -1,7 +1,7 @@
 package cotuba.epub;
 
 import cotuba.aplicacao.GeradorDeEbook;
-import cotuba.dominio.Capitulo;
+import cotuba.plugin.Capitulo;
 import cotuba.dominio.Ebook;
 import nl.siegmann.epublib.domain.Book;
 import nl.siegmann.epublib.domain.Resource;

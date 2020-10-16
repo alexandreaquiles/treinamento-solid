@@ -22,9 +22,9 @@ import java.util.stream.Stream;
 public class RenderizadorDeMDParaHTMLComCommonMark implements RenderizadorDeMDParaHTML {
 
     @Override
-    public List<Capitulo> renderiza(Path diretorioDosMD) {
+    public List<cotuba.plugin.Capitulo> renderiza(Path diretorioDosMD) {
 
-        List<Capitulo> capitulos = new ArrayList<>();
+        List<cotuba.plugin.Capitulo> capitulos = new ArrayList<>();
 
         PathMatcher matcher = FileSystems.getDefault().getPathMatcher("glob:**/*.md");
         try (Stream<Path> arquivosMD = Files.list(diretorioDosMD)) {

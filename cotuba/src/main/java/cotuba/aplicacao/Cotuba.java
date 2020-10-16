@@ -1,6 +1,6 @@
 package cotuba.aplicacao;
 
-import cotuba.dominio.Capitulo;
+import cotuba.plugin.Capitulo;
 import cotuba.dominio.Ebook;
 import cotuba.dominio.FormatoDoEbook;
 import cotuba.plugin.AoFinalizarGeracao;
@@ -8,7 +8,7 @@ import cotuba.plugin.AoFinalizarGeracao;
 import java.nio.file.Path;
 import java.util.List;
 
-public class Cotuba {
+public interface Cotuba {
 
     public static void executa(ParametrosDoCotuba parametrosDoCotuba) {
         FormatoDoEbook formato = parametrosDoCotuba.getFormato();
