@@ -1,6 +1,6 @@
 package cotuba.aplicacao;
 
-import cotuba.plugin.Capitulo;
+import cotuba.dominio.Capitulo;
 import cotuba.dominio.Ebook;
 import cotuba.dominio.FormatoDoEbook;
 import cotuba.plugin.AoFinalizarGeracao;
@@ -18,10 +18,7 @@ public interface Cotuba {
         RenderizadorDeMDParaHTML renderizadorDeMDParaHTML = RenderizadorDeMDParaHTML.cria();
         List<Capitulo> capitulos = renderizadorDeMDParaHTML.renderiza(diretorioDosMD);
 
-        Ebook ebook = new Ebook();
-        ebook.setFormato(formato);
-        ebook.setArquivoDeSaida(arquivoDeSaida);
-        ebook.setCapitulos(capitulos);
+        Ebook ebook = new Ebook(formato, arquivoDeSaida, capitulos);
 
         GeradorDeEbook geradorDeEbook = formato.getGeradorDeEbook();
         geradorDeEbook.gera(ebook);

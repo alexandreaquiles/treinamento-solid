@@ -1,6 +1,5 @@
 package cotuba.tema;
 
-import cotuba.dominio.Capitulo;
 import cotuba.plugin.Tema;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -8,8 +7,7 @@ import org.jsoup.select.Elements;
 
 public class AplicadorDeTema {
 
-    public void aplica(Capitulo capitulo) {
-        String conteudoHTML = capitulo.getConteudoHTML();
+    public String aplica(String conteudoHTML) {
         Document document = Jsoup.parse(conteudoHTML);
 
         Elements head = document.select("head");
@@ -18,7 +16,7 @@ public class AplicadorDeTema {
             head.append("<style>" + tema + "</style>");
         }
 
-        capitulo.setConteudoHTML(document.html());
+        return document.html();
     }
 
 }

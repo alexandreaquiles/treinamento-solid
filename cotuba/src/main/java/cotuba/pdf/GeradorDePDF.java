@@ -9,7 +9,7 @@ import com.itextpdf.layout.element.IBlockElement;
 import com.itextpdf.layout.element.IElement;
 import com.itextpdf.layout.property.AreaBreakType;
 import cotuba.aplicacao.GeradorDeEbook;
-import cotuba.plugin.Capitulo;
+import cotuba.dominio.Capitulo;
 import cotuba.dominio.Ebook;
 
 import java.nio.file.Files;

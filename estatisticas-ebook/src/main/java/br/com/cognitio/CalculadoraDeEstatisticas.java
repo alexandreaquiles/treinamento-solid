@@ -1,7 +1,7 @@
 package br.com.cognitio;
 
-import cotuba.plugin.Capitulo;
-import cotuba.plugin.Ebook;
+import cotuba.dominio.Capitulo;
+import cotuba.dominio.Ebook;
 import cotuba.plugin.AoFinalizarGeracao;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -35,7 +35,7 @@ public class CalculadoraDeEstatisticas implements AoFinalizarGeracao {
                 contagemDeTodasAsPalavras.adicionaPalavra(palavraEmMaiusculas);
             }
 
-            for (Map.Entry<String, Integer> par: contagemDeTodasAsPalavras.entrySet()) {
+            for (Map.Entry<String, Integer> par : contagemDeTodasAsPalavras.entrySet()) {
                 String palavra = par.getKey();
                 Integer contagem = par.getValue();
                 System.out.println(palavra + ":" + contagem);

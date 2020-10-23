@@ -2,6 +2,7 @@ package cotuba.md;
 
 import cotuba.aplicacao.RenderizadorDeMDParaHTML;
 import cotuba.dominio.Capitulo;
+import cotuba.dominio.CapituloBuilder;
 import cotuba.tema.AplicadorDeTema;
 import org.commonmark.node.AbstractVisitor;
 import org.commonmark.node.Heading;
@@ -22,9 +23,9 @@ import java.util.stream.Stream;
 public class RenderizadorDeMDParaHTMLComCommonMark implements RenderizadorDeMDParaHTML {
 
     @Override
-    public List<cotuba.plugin.Capitulo> renderiza(Path diretorioDosMD) {
+    public List<Capitulo> renderiza(Path diretorioDosMD) {
 
-        List<cotuba.plugin.Capitulo> capitulos = new ArrayList<>();
+        List<Capitulo> capitulos = new ArrayList<>();
 
         PathMatcher matcher = FileSystems.getDefault().getPathMatcher("glob:**/*.md");
         try (Stream<Path> arquivosMD = Files.list(diretorioDosMD)) {
@@ -32,7 +33,7 @@ public class RenderizadorDeMDParaHTMLComCommonMark implements RenderizadorDeMDPa
                     .filter(matcher::matches)
                     .sorted()
                     .forEach(arquivoMD -> {
-                        Capitulo capitulo = new Capitulo();
+                        CapituloBuilder capituloBuilder = new CapituloBuilder();
 
                         Parser parser = Parser.builder().build();
                         Node document = null;
@@ -44,7 +45,7 @@ public class RenderizadorDeMDParaHTMLComCommonMark implements RenderizadorDeMDPa
                                     if (heading.getLevel() == 1) {
                                         // capítulo
                                         String tituloDoCapitulo = ((Text) heading.getFirstChild()).getLiteral();
-                                        capitulo.setTitulo(tituloDoCapitulo);
+                                        capituloBuilder.comTitulo(tituloDoCapitulo);
                                     } else if (heading.getLevel() == 2) {
                                         // seção
                                     } else if (heading.getLevel() == 3) {
@@ -61,10 +62,12 @@ public class RenderizadorDeMDParaHTMLComCommonMark implements RenderizadorDeMDPa
                             HtmlRenderer renderer = HtmlRenderer.builder().build();
                             String html = renderer.render(document);
 
-                            capitulo.setConteudoHTML(html);
-
                             AplicadorDeTema tema = new AplicadorDeTema();
-                            tema.aplica(capitulo);
+                            String htmlComTemaAplicado = tema.aplica(html);
+
+                            capituloBuilder.comConteudoHTML(htmlComTemaAplicado);
+
+                            Capitulo capitulo = capituloBuilder.constroi();
 
                             capitulos.add(capitulo);
 

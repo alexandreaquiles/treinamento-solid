@@ -1,5 +1,7 @@
 package cotuba.plugin;
 
+import cotuba.dominio.Ebook;
+
 import java.util.ServiceLoader;
 
 // SPI (Service Provider Interface) - interface está pouco coesa
