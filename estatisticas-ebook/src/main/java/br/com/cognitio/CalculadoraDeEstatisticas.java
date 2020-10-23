@@ -8,7 +8,6 @@ import org.jsoup.nodes.Document;
 
 import java.text.Normalizer;
 import java.util.List;
-import java.util.Map;
 
 public class CalculadoraDeEstatisticas implements AoFinalizarGeracao {
 
@@ -29,16 +28,16 @@ public class CalculadoraDeEstatisticas implements AoFinalizarGeracao {
 
             String[] palavras = textoDoCapituloSemAcentos.split("\\s+");
 
-            ContagemDePalavras contagemDeTodasAsPalavras = new ContagemDePalavras();
+            ContadorDePalavras contadorDePalavras = new ContadorDePalavras();
             for (String palavra : palavras) {
                 String palavraEmMaiusculas = palavra.toUpperCase().trim();
-                contagemDeTodasAsPalavras.adicionaPalavra(palavraEmMaiusculas);
+                contadorDePalavras.adicionaPalavra(palavraEmMaiusculas);
             }
 
-            for (Map.Entry<String, Integer> par : contagemDeTodasAsPalavras.entrySet()) {
-                String palavra = par.getKey();
-                Integer contagem = par.getValue();
-                System.out.println(palavra + ":" + contagem);
+            for (ContadorDePalavras.Contagem contagem : contadorDePalavras) {
+                String palavra = contagem.getPalavra();
+                Integer quantidade = contagem.getQuantidade();
+                System.out.println(palavra + ":" + quantidade);
             }
 
         }
