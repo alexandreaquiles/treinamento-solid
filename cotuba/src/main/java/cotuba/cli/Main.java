@@ -17,7 +17,7 @@ public class Main {
 			Path arquivoDeSaida = opcoesDaCLI.getArquivoDeSaida();
 			modoVerboso = opcoesDaCLI.isModoVerboso();
 
-			Cotuba.executa(opcoesDaCLI);
+			Cotuba.executa(opcoesDaCLI, System.out::println);
 
 			System.out.println("Arquivo gerado com sucesso: " + arquivoDeSaida);
 

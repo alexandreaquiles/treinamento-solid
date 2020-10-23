@@ -8,11 +8,12 @@ import org.jsoup.nodes.Document;
 
 import java.text.Normalizer;
 import java.util.List;
+import java.util.function.Consumer;
 
 public class CalculadoraDeEstatisticas implements AoFinalizarGeracao {
 
     @Override
-    public void aposGeracao(Ebook ebook) {
+    public void aposGeracao(Ebook ebook, Consumer<String> consumer) {
 
         List<? extends Capitulo> capitulos = ebook.getCapitulos();
         for (Capitulo capitulo: capitulos) {
@@ -37,7 +38,7 @@ public class CalculadoraDeEstatisticas implements AoFinalizarGeracao {
             for (ContadorDePalavras.Contagem contagem : contadorDePalavras) {
                 String palavra = contagem.getPalavra();
                 Integer quantidade = contagem.getQuantidade();
-                System.out.println(palavra + ":" + quantidade);
+                consumer.accept(palavra + ":" + quantidade);
             }
 
         }

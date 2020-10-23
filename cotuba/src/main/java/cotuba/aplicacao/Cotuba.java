@@ -7,10 +7,11 @@ import cotuba.plugin.AoFinalizarGeracao;
 
 import java.nio.file.Path;
 import java.util.List;
+import java.util.function.Consumer;
 
 public interface Cotuba {
 
-    public static void executa(ParametrosDoCotuba parametrosDoCotuba) {
+    static void executa(ParametrosDoCotuba parametrosDoCotuba, Consumer<String> consumer) {
         FormatoDoEbook formato = parametrosDoCotuba.getFormato();
         Path diretorioDosMD = parametrosDoCotuba.getDiretorioDosMD();
         Path arquivoDeSaida = parametrosDoCotuba.getArquivoDeSaida();
@@ -23,7 +24,7 @@ public interface Cotuba {
         GeradorDeEbook geradorDeEbook = formato.getGeradorDeEbook();
         geradorDeEbook.gera(ebook);
 
-        AoFinalizarGeracao.gerou(ebook);
+        AoFinalizarGeracao.gerou(ebook, consumer);
     }
 
 }
